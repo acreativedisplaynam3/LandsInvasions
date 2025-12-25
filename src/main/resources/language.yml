@@ -1,6 +1,12 @@
 messages:
   only-players-can-execute-this-command: ""
+  not-enough-command-args: ""
 
   discord-invite-link: ""
   store-link: ""
+
   empty-announcement-message: ""
+  empty-stream-link: ""
+  invalid-streaming-application-used: ""
+  youtube-stream-broadcast-message: ""
+  twitch-stream-broadcast-message: ""

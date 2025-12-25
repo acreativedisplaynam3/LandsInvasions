@@ -12,3 +12,6 @@ commands:
   announce:
     permission: landsinvasion.command.announce
     usage: /<command> <message>
+  live:
+    permission: landsinvasion.command.live
+    usage: /<command> <message>

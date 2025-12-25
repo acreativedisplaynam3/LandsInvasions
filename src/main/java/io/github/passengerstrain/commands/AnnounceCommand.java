@@ -28,14 +28,21 @@ public class AnnounceCommand implements CommandExecutor {
 
         Player player = (Player) commandSender;
 
+        if(args.length == 0) {
+            String notEnoughArgs = configUtils.getLanguageConfiguration().getString("messages.not-enough-command-args");
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', notEnoughArgs != null ? notEnoughArgs : "&cYou have provided insufficient args for this command."));
+            return true;
+        }
+
+        String announceMessage = args[0];
+
         if(player.hasPermission("landsinvasion.command.announce")) {
-            String announceMessage = args[0];
             if(announceMessage.isEmpty()) {
                 String emptyAnnounceMessage = configUtils.getLanguageConfiguration().getString("messages.empty-announcement-message");
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', emptyAnnounceMessage != null ? emptyAnnounceMessage : "&cYou cannot broadcast an empty announcement message."));
             } else {
                 for (Player onlinePlayers: Bukkit.getOnlinePlayers()) {
-                    onlinePlayers.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c[BROADCAST] " + announceMessage));
+                    onlinePlayers.sendMessage(ChatColor.translateAlternateColorCodes('&', announceMessage));
                 }
             }
         } else {

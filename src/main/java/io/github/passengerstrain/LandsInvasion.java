@@ -2,6 +2,7 @@ package io.github.passengerstrain;
 
 import io.github.passengerstrain.commands.AnnounceCommand;
 import io.github.passengerstrain.commands.DiscordCommand;
+import io.github.passengerstrain.commands.LiveCommand;
 import io.github.passengerstrain.commands.StoreCommand;
 import io.github.passengerstrain.utils.ConfigUtils;
 import io.github.passengerstrain.utils.LogUtils;
@@ -37,6 +38,7 @@ public final class LandsInvasion extends JavaPlugin {
         getCommand("discord").setExecutor(new DiscordCommand(configUtils));
         getCommand("announce").setExecutor(new AnnounceCommand(configUtils));
         getCommand("store").setExecutor(new StoreCommand(configUtils));
+        getCommand("live").setExecutor(new LiveCommand(configUtils));
     }
 
     private void registerConfigFiles() {
