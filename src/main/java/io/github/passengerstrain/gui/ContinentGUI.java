@@ -1,5 +1,6 @@
 package io.github.passengerstrain.gui;
 
+import com.cryptomorin.xseries.XMaterial;
 import io.github.passengerstrain.utils.ConfigUtils;
 import org.bukkit.*;
 import org.bukkit.event.Listener;
@@ -34,8 +35,8 @@ public class ContinentGUI implements Listener {
             String name = configUtils.getGuiConfiguration().getString("continents." + i + ".name");
             String displayItem = configUtils.getGuiConfiguration().getString("continents." + i + ".displayitem");
             List<String> lore = configUtils.getGuiConfiguration().getStringList("continents." + i + ".lore");
-            Material material = Material.getMaterial(displayItem != null ? displayItem.toLowerCase() : "E");
-            inventory.addItem(createGuiItem(material, name, lore.toArray(new String[0])));
+            XMaterial material = XMaterial.matchXMaterial(displayItem != null ? displayItem.toLowerCase() : "STONE").orElse(XMaterial.STONE);
+            inventory.addItem(createGuiItem(material.parseMaterial(), name, lore.toArray(new String[0])));
         }
     }
 
