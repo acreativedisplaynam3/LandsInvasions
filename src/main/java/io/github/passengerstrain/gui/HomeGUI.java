@@ -13,10 +13,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 @SuppressWarnings("unused")
 public class HomeGUI implements Listener {
 
@@ -25,7 +21,6 @@ public class HomeGUI implements Listener {
 
     public HomeGUI(ConfigUtils configUtils) {
         this.configUtils = configUtils;
-        Map<Player, String[]> playerHomes = new HashMap<>();
         inventory = Bukkit.createInventory(null, 36, "Your Home");
         initializeItems();
     }
