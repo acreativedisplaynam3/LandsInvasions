@@ -9,3 +9,6 @@ commands:
   store:
     permission: landsinvasion.command.store
     usage: /<command>
+  announce:
+    permission: landsinvasion.command.announce
+    usage: /<command> <message>
