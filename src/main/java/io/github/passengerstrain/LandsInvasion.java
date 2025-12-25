@@ -1,20 +1,21 @@
 package io.github.passengerstrain;
 
-import io.github.passengerstrain.commands.AnnounceCommand;
-import io.github.passengerstrain.commands.DiscordCommand;
-import io.github.passengerstrain.commands.LiveCommand;
-import io.github.passengerstrain.commands.StoreCommand;
+import io.github.passengerstrain.commands.*;
+import io.github.passengerstrain.gui.ContinentGUI;
 import io.github.passengerstrain.utils.ConfigUtils;
 import io.github.passengerstrain.utils.LogUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 @SuppressWarnings("unused")
 public final class LandsInvasion extends JavaPlugin {
 
     private ConfigUtils configUtils;
+    private ContinentGUI continentGUI;
 
     @Override
     public void onEnable() {
+        configUtils = new ConfigUtils(this);
         LogUtils.info("Enabling LandsInvasion.");
         LogUtils.info("Creating configuration files...");
         registerConfigFiles();
@@ -31,7 +32,7 @@ public final class LandsInvasion extends JavaPlugin {
     }
 
     private void registerListeners() {
-
+        Bukkit.getServer().getPluginManager().registerEvents(new ContinentGUI(configUtils), this);
     }
 
     private void registerCommands() {
@@ -39,10 +40,12 @@ public final class LandsInvasion extends JavaPlugin {
         getCommand("announce").setExecutor(new AnnounceCommand(configUtils));
         getCommand("store").setExecutor(new StoreCommand(configUtils));
         getCommand("live").setExecutor(new LiveCommand(configUtils));
+        continentGUI = new ContinentGUI(configUtils);
+        getCommand("continents").setExecutor(new ContinentGUICommand(configUtils, continentGUI));
     }
 
     private void registerConfigFiles() {
-        configUtils = new ConfigUtils(this);
         configUtils.createLanguageConfiguration();
+        configUtils.createGuiConfiguration();
     }
 }

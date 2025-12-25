@@ -13,6 +13,8 @@ public class ConfigUtils {
 
     private FileConfiguration languageConfiguration;
 
+    private FileConfiguration guiConfiguration;
+
     private final LandsInvasion plugin;
 
     public ConfigUtils(LandsInvasion plugin) {
@@ -21,6 +23,10 @@ public class ConfigUtils {
 
     public FileConfiguration getLanguageConfiguration() {
         return this.languageConfiguration;
+    }
+
+    public FileConfiguration getGuiConfiguration() {
+        return this.guiConfiguration;
     }
 
     public void createLanguageConfiguration() {
@@ -33,6 +39,21 @@ public class ConfigUtils {
         languageConfiguration = new YamlConfiguration();
         try {
             languageConfiguration.load(languageConfigFile);
+        } catch (IOException | InvalidConfigurationException e) {
+            LogUtils.severe("The server was unable to load configuration file, please read through the logs for more information." + e.getMessage());
+        }
+    }
+
+    public void createGuiConfiguration() {
+        File guiConfigFile = new File(plugin.getDataFolder(), "gui.yml");
+        if (!guiConfigFile.exists()) {
+            guiConfigFile.getParentFile().mkdirs();
+            plugin.saveResource("gui.yml", false);
+        }
+
+        guiConfiguration = new YamlConfiguration();
+        try {
+            guiConfiguration.load(guiConfigFile);
         } catch (IOException | InvalidConfigurationException e) {
             LogUtils.severe("The server was unable to load configuration file, please read through the logs for more information." + e.getMessage());
         }

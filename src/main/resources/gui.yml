@@ -1,0 +1,80 @@
+gui:
+  name: ""
+  size:
+
+continents:
+  0:
+    name: ""
+    displayitem: STONE
+    lore:
+      - ""
+      - ""
+    teleport:
+      x: 100
+      y: 100
+      z: 100
+  1:
+    name: ""
+    displayitem: STONE
+    lore:
+      - ""
+      - ""
+    teleport:
+      x: 100
+      y: 100
+      z: 100
+
+  2:
+    name: ""
+    displayitem: STONE
+    lore:
+      - ""
+      - ""
+    teleport:
+      x: 100
+      y: 100
+      z: 100
+
+  3:
+    name: ""
+    displayitem: STONE
+    lore:
+      - ""
+      - ""
+    teleport:
+      x: 100
+      y: 100
+      z: 100
+
+  4:
+    name: ""
+    displayitem: STONE
+    lore:
+      - ""
+      - ""
+    teleport:
+      x: 100
+      y: 100
+      z: 100
+
+  5:
+    name: ""
+    displayitem: STONE
+    lore:
+      - ""
+      - ""
+    teleport:
+      x: 100
+      y: 100
+      z: 100
+
+  6:
+    name: ""
+    displayitem: STONE
+    lore:
+      - ""
+      - ""
+    teleport:
+      x: 100
+      y: 100
+      z: 100
