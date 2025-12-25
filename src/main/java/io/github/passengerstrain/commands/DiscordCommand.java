@@ -30,11 +30,10 @@ public class DiscordCommand implements CommandExecutor {
         if(player.hasPermission("landsinvasion.command.discord")) {
             String discordInviteLink = configUtils.getLanguageConfiguration().getString("messages.discord-invite-link");
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', discordInviteLink != null ? discordInviteLink : "&cThis server does not have a community server invite link configured yet."));
-            return true;
         } else {
             String noPermission = configUtils.getLanguageConfiguration().getString("messages.no-permission");
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', noPermission != null ? noPermission : "&cYou don't have sufficient permissions to execute this command."));
         }
-        return false;
+        return true;
     }
 }

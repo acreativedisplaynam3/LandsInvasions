@@ -33,13 +33,11 @@ public class AnnounceCommand implements CommandExecutor {
             if(announceMessage.isEmpty()) {
                 String emptyAnnounceMessage = configUtils.getLanguageConfiguration().getString("messages.empty-announcement-message");
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', emptyAnnounceMessage != null ? emptyAnnounceMessage : "&cYou cannot broadcast an empty announcement message."));
-                return true;
             } else {
                 for (Player onlinePlayers: Bukkit.getOnlinePlayers()) {
                     onlinePlayers.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c[BROADCAST] " + announceMessage));
                 }
             }
-            return true;
         } else {
             String noPermission = configUtils.getLanguageConfiguration().getString("messages.no-permission");
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', noPermission != null ? noPermission : "&cYou don't have sufficient permissions to execute this command."));
