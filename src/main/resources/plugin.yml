@@ -1,0 +1,11 @@
+name: LandsInvasion
+version: '1.0-SNAPSHOT'
+main: io.github.passengerstrain.LandsInvasion
+api-version: '1.18'
+commands:
+  discord:
+    permission: landsinvasion.command.discord
+    usage: /<command>
+  store:
+    permission: landsinvasion.command.store
+    usage: /<command>
