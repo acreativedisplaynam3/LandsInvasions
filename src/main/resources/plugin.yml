@@ -15,6 +15,3 @@ commands:
   live:
     permission: landsinvasion.command.live
     usage: /<command> <message>
-  continents:
-    permission: landsinvasion.command.continentgui
-    usage: /<command>
