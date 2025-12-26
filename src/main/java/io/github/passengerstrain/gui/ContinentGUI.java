@@ -23,9 +23,8 @@ public class ContinentGUI implements Listener {
 
     public ContinentGUI(ConfigUtils configUtils) {
         this.configUtils = configUtils;
-        int guiSize = configUtils.getGuiConfiguration().getInt("gui.gui-size");
         String guiName = configUtils.getGuiConfiguration().getString("gui.gui-name");
-        inventory = Bukkit.createInventory(null, guiSize, guiName != null ? guiName : "Default Name");
+        inventory = Bukkit.createInventory(null, 36, guiName != null ? guiName : "Default Name");
 
         initializeItems();
     }

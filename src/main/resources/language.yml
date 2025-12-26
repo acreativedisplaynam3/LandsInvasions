@@ -10,3 +10,4 @@ messages:
   invalid-streaming-application-used: ""
   youtube-stream-broadcast-message: ""
   twitch-stream-broadcast-message: ""
+  tiktok-stream-broadcast-message: ""

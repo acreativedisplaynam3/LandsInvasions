@@ -43,6 +43,8 @@ public class LiveCommand implements CommandExecutor {
             case "twitch":
                 handleTwichBroadcast(player, args);
                 break;
+            case "tiktok":
+                handleTiktokBroadcast(player, args);
             default:
                 String invalidApplicationTypeMessage = configUtils.getLanguageConfiguration().getString("messages.invalid-streaming-application-used");
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', invalidApplicationTypeMessage != null ? invalidApplicationTypeMessage : "&cInvalid stream platform mentioned. Please use 'twitch' or 'youtube'."));
@@ -59,7 +61,7 @@ public class LiveCommand implements CommandExecutor {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', emptyBroadcastStreamLink != null ? emptyBroadcastStreamLink : "&cPlease enter a valid stream link."));
         } else {
             for(Player onlinePlayers : Bukkit.getOnlinePlayers()) {
-                String broadcastMessage = configUtils.getLanguageConfiguration().getString("messages.youtube-stream-broadcast-message").replace("%youtube_broadcast_player_name%", player.getName());
+                String broadcastMessage = configUtils.getLanguageConfiguration().getString("messages.youtube-stream-broadcast-message").replace("%broadcast_player_name%", player.getName()).replace("%channel_link%", youtubeChannelLink);
                 onlinePlayers.sendMessage(ChatColor.translateAlternateColorCodes('&', broadcastMessage != null ? broadcastMessage : "&cThe server doesn't have this configured yet."));
             }
         }
@@ -74,7 +76,22 @@ public class LiveCommand implements CommandExecutor {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', emptyBroadcastStreamLink != null ? emptyBroadcastStreamLink : "&cPlease enter a valid stream link."));
         } else {
             for(Player onlinePlayers : Bukkit.getOnlinePlayers()) {
-                String broadcastMessage = configUtils.getLanguageConfiguration().getString("messages.twitch-stream-broadcast-message").replace("%twitch_broadcast_player_name%", player.getName());
+                String broadcastMessage = configUtils.getLanguageConfiguration().getString("messages.twitch-stream-broadcast-message").replace("%broadcast_player_name%", player.getName()).replace("%channel_link%", twitchChannelLink);
+                onlinePlayers.sendMessage(ChatColor.translateAlternateColorCodes('&', broadcastMessage != null ? broadcastMessage : "&cThe server doesn't have this configured yet."));
+            }
+        }
+        return true;
+    }
+
+    private boolean handleTiktokBroadcast(Player player, String[] args) {
+        String tiktokChannelLink = args[1];
+
+        if(tiktokChannelLink.isEmpty()) {
+            String emptyBroadcastStreamLink = configUtils.getLanguageConfiguration().getString("messages.empty-stream-link");
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', emptyBroadcastStreamLink != null ? emptyBroadcastStreamLink : "&cPlease enter a valid stream link."));
+        } else {
+            for(Player onlinePlayers : Bukkit.getOnlinePlayers()) {
+                String broadcastMessage = configUtils.getLanguageConfiguration().getString("messages.tiktok-stream-broadcast-message").replace("%broadcast_player_name%", player.getName()).replace("%channel_link%", tiktokChannelLink);
                 onlinePlayers.sendMessage(ChatColor.translateAlternateColorCodes('&', broadcastMessage != null ? broadcastMessage : "&cThe server doesn't have this configured yet."));
             }
         }

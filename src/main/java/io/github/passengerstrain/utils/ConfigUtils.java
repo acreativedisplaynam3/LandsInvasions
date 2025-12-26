@@ -4,7 +4,6 @@ import io.github.passengerstrain.LandsInvasion;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +15,6 @@ public class ConfigUtils {
 
     private FileConfiguration guiConfiguration;
 
-    private FileConfiguration data;
 
     private final LandsInvasion plugin;
 
@@ -30,10 +28,6 @@ public class ConfigUtils {
 
     public FileConfiguration getGuiConfiguration() {
         return this.guiConfiguration;
-    }
-
-    public FileConfiguration getData() {
-        return this.data;
     }
 
     public void createLanguageConfiguration() {
@@ -63,36 +57,6 @@ public class ConfigUtils {
             guiConfiguration.load(guiConfigFile);
         } catch (IOException | InvalidConfigurationException e) {
             LogUtils.severe("The server was unable to load configuration file, please read through the logs for more information." + e.getMessage());
-        }
-    }
-
-    public void createDataFile() {
-        File dataFile = new File(plugin.getDataFolder(), "data.yml");
-        if (!dataFile.exists()) {
-            dataFile.getParentFile().mkdirs();
-            plugin.saveResource("data.yml", false);
-        }
-
-        data = new YamlConfiguration();
-        try {
-            data.load(dataFile);
-        } catch (IOException | InvalidConfigurationException e) {
-            LogUtils.severe("The server was unable to load configuration file, please read through the logs for more information." + e.getMessage());
-        }
-    }
-
-    public void set(Player player, int index) {
-        String homeLocation = player.getLocation().getX() + "," + player.getLocation().getY() + "," + player.getLocation().getZ();
-        save(player.getName(), homeLocation, index);
-        LogUtils.info("Successfully saved playerHomeData.");
-    }
-
-    private void save(String playerName, String homeLocation, int index) {
-        data.set("players." + playerName + ".playerHouseData.home" + (index + 1), homeLocation);
-        try {
-            getData().save("data.yml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }

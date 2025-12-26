@@ -42,7 +42,7 @@ public class AnnounceCommand implements CommandExecutor {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', emptyAnnounceMessage != null ? emptyAnnounceMessage : "&cYou cannot broadcast an empty announcement message."));
             } else {
                 for (Player onlinePlayers: Bukkit.getOnlinePlayers()) {
-                    onlinePlayers.sendMessage(ChatColor.translateAlternateColorCodes('&', announceMessage));
+                    onlinePlayers.sendTitle(ChatColor.translateAlternateColorCodes('&', "&bMineLands"), ChatColor.translateAlternateColorCodes('&', announceMessage));
                 }
             }
         } else {

@@ -2,7 +2,6 @@ package io.github.passengerstrain;
 
 import io.github.passengerstrain.commands.*;
 import io.github.passengerstrain.gui.ContinentGUI;
-import io.github.passengerstrain.gui.HomeGUI;
 import io.github.passengerstrain.utils.ConfigUtils;
 import io.github.passengerstrain.utils.LogUtils;
 import org.bukkit.Bukkit;
@@ -16,24 +15,20 @@ public final class LandsInvasion extends JavaPlugin {
     @Override
     public void onEnable() {
         configUtils = new ConfigUtils(this);
-        LogUtils.info("Enabling LandsInvasion.");
         LogUtils.info("Creating configuration files...");
         registerConfigFiles();
         LogUtils.info("Registering listeners...");
         registerListeners();
         LogUtils.info("Registering commands...");
         registerCommands();
-        LogUtils.info("Successfully enabled the plugin.");
     }
 
     @Override
     public void onDisable() {
-        LogUtils.info("Disabling LandsInvasion.");
     }
 
     private void registerListeners() {
         Bukkit.getServer().getPluginManager().registerEvents(new ContinentGUI(configUtils), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new HomeGUI(configUtils), this);
     }
 
     private void registerCommands() {
@@ -48,6 +43,5 @@ public final class LandsInvasion extends JavaPlugin {
     private void registerConfigFiles() {
         configUtils.createLanguageConfiguration();
         configUtils.createGuiConfiguration();
-        configUtils.createDataFile();
     }
 }
