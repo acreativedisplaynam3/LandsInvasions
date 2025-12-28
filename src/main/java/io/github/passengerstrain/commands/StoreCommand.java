@@ -1,7 +1,7 @@
 package io.github.passengerstrain.commands;
 
+import io.github.passengerstrain.utils.ColorUtils;
 import io.github.passengerstrain.utils.ConfigUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,10 +29,10 @@ public class StoreCommand implements CommandExecutor {
 
         if(player.hasPermission("landsinvasion.command.store")) {
             String discordInviteLink = configUtils.getLanguageConfiguration().getString("messages.store-link");
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', discordInviteLink != null ? discordInviteLink : "&cThis server does not have a website link configured yet."));
+            player.sendMessage(ColorUtils.colorize(discordInviteLink != null ? discordInviteLink : "&cThis server does not have a website link configured yet."));
         } else {
             String noPermission = configUtils.getLanguageConfiguration().getString("messages.no-permission");
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', noPermission != null ? noPermission : "&cYou don't have sufficient permissions to execute this command."));
+            player.sendMessage(ColorUtils.colorize(noPermission != null ? noPermission : "&cYou don't have sufficient permissions to execute this command."));
         }
         return true;
     }
